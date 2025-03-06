@@ -310,7 +310,6 @@
     </div>
 
     <script>
-        const PROXY_URL = 'https://grok-proxy.your-worker.workers.dev/chat';  // 请替换为您的 Worker URL
         let isProcessing = false;
         let retryCount = 0;
         const MAX_RETRIES = 3;
@@ -380,7 +379,7 @@
 
             async function makeRequest() {
                 try {
-                    const response = await fetch(PROXY_URL, {
+                    const response = await fetch('/api/chat', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
