@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五环干饭要用盆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: #fdf6e3;
+            color: #8b4513;
+            padding-top: 80px;
+        }
+
+        .navbar {
+            background: #8b4513;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #654321;
+        }
+
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            color: #8b4513;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(139,69,19,0.2);
+        }
+
+        .subtitle {
+            color: #654321;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(139,69,19,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #8b4513;
+        }
+
+        .feature-title {
+            color: #8b4513;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: #654321;
+            line-height: 1.6;
+        }
+
+        .feature-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #8b4513;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .feature-link:hover {
+            background: #654321;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #8b4513;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">五环干饭要用盆</a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="food-picker.html">美食选择</a>
+                <a href="lottery.html">彩票信息</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="hero-section">
+            <h1>五环干饭要用盆</h1>
+            <p class="subtitle">解决干饭人的日常烦恼，让每顿饭都充满期待！</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">五</div>
+                <h2 class="feature-title">五星级美食体验</h2>
+                <p class="feature-description">
+                    精选西安本地特色美食，从肉夹馍到biangbiang面，让你体验最地道的西安味道。
+                </p>
+                <a href="food-picker.html" class="feature-link">去选美食</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">环</div>
+                <h2 class="feature-title">环环相扣的服务</h2>
+                <p class="feature-description">
+                    从选择美食到查看彩票，我们提供一站式服务，让你的生活更加便利。
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">饭</div>
+                <h2 class="feature-title">饭来张口</h2>
+                <p class="feature-description">
+                    随机选择功能帮你解决"吃什么"的难题，让选择困难症远离你的生活。
+                </p>
+                <a href="food-picker.html" class="feature-link">随机选择</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">要</div>
+                <h2 class="feature-title">要你好看</h2>
+                <p class="feature-description">
+                    精心设计的界面，让你使用起来赏心悦目，体验舒适。
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">用</div>
+                <h2 class="feature-title">用心服务</h2>
+                <p class="feature-description">
+                    提供实时彩票信息，智能推荐号码，让你轻松掌握开奖动态。
+                </p>
+                <a href="lottery.html" class="feature-link">查看彩票</a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">盆</div>
+                <h2 class="feature-title">盆满钵满</h2>
+                <p class="feature-description">
+                    希望每位用户都能吃得开心，中得大奖，收获满满！
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p> 2025 五环干饭要用盆 - 让干饭更快乐</p>
+        </div>
+    </div>
+</body>
+</html>

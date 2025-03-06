@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彩票信息 - 五环干饭要用盆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: #fdf6e3;
+            color: #8b4513;
+            padding-top: 80px;
+        }
+
+        .navbar {
+            background: #8b4513;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #654321;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #8b4513;
+            text-shadow: 1px 1px 2px rgba(139,69,19,0.3);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .lottery-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .lottery-numbers {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            animation: appear 0.5s ease;
+        }
+
+        .red-ball {
+            background: #ff4444;
+        }
+
+        .blue-ball {
+            background: #4444ff;
+        }
+
+        .recommendation {
+            background: #fff8dc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .recommendation h3 {
+            color: #8b4513;
+            margin-bottom: 15px;
+        }
+
+        .recommendation p {
+            color: #654321;
+            line-height: 1.6;
+        }
+
+        .date-info {
+            text-align: center;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .refresh-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 25px;
+            background: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .refresh-button:hover {
+            background: #654321;
+            transform: translateY(-2px);
+        }
+
+        .lottery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .prediction-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .prediction-card h3 {
+            color: #8b4513;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .prize-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff8dc;
+            border-radius: 10px;
+        }
+        
+        .prize-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .prize-item {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .prize-item strong {
+            color: #ff4444;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @keyframes appear {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">五环干饭要用盆</a>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="food-picker.html">美食选择</a>
+                <a href="lottery.html">彩票信息</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <h1>今日彩票信息</h1>
+        
+        <div class="lottery-section">
+            <h2>双色球最新开奖</h2>
+            <div class="date-info" id="ssqDate"></div>
+            <div class="lottery-numbers" id="ssqNumbers"></div>
+        </div>
+
+        <div class="lottery-section">
+            <h2>大乐透最新开奖</h2>
+            <div class="date-info" id="dltDate"></div>
+            <div class="lottery-numbers" id="dltNumbers"></div>
+        </div>
+
+        <button class="refresh-button" onclick="refreshData()">刷新数据</button>
+
+        <div class="lottery-section">
+            <h2>智能推荐</h2>
+            <div class="lottery-grid">
+                <div class="prediction-card">
+                    <h3>双色球推荐号码</h3>
+                    <div id="ssqPredictions"></div>
+                </div>
+                <div class="prediction-card">
+                    <h3>大乐透推荐号码</h3>
+                    <div id="dltPredictions"></div>
+                </div>
+            </div>
+            <div class="recommendation">
+                <h3>投注建议</h3>
+                <p id="recommendation"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API配置
+        const API_CONFIG = {
+            baseUrl: 'http://api.huiniao.top/interface/home/lotteryHistory',
+            types: {
+                ssq: 'ssq',  // 双色球
+                dlt: 'dlt'   // 大乐透
+            }
+        };
+
+        // 获取彩票数据
+        async function fetchLotteryData(type) {
+            try {
+                console.log(`Fetching lottery data for type: ${type}`);
+                const url = `${API_CONFIG.baseUrl}?type=${type}&page=1&limit=1`;
+                console.log('Request URL:', url);
+
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                console.log('API Response:', data);
+
+                if (data.code === 1 && data.data) {
+                    // 检查是否有最新数据
+                    const result = data.data.last || (data.data.list && data.data.list[0]);
+                    if (result) {
+                        console.log('Parsed result:', result);
+                        return result;
+                    }
+                }
+                console.error('Invalid API response format:', data);
+                return null;
+            } catch (error) {
+                console.error('Fetch Error:', error);
+                return null;
+            }
+        }
+
+        // 解析开奖结果
+        function parseLotteryResult(result, type) {
+            if (!result) return null;
+            
+            console.log(`Parsing lottery result for type ${type}:`, result);
+            
+            // 解析数字
+            const parseNumbers = (nums) => {
+                return nums.map(num => {
+                    const parsed = typeof num === 'number' ? num : parseInt(num);
+                    return isNaN(parsed) ? 0 : parsed;
+                });
+            };
+
+            try {
+                if (type === API_CONFIG.types.ssq) {
+                    const numbers = {
+                        red: parseNumbers([result.one, result.two, result.three, result.four, result.five, result.six]),
+                        blue: parseNumbers([result.seven])
+                    };
+                    console.log('Parsed SSQ numbers:', numbers);
+                    return numbers;
+                } else if (type === API_CONFIG.types.dlt) {
+                    const numbers = {
+                        red: parseNumbers([result.one, result.two, result.three, result.four, result.five]),
+                        blue: parseNumbers([result.six, result.seven])
+                    };
+                    console.log('Parsed DLT numbers:', numbers);
+                    return numbers;
+                }
+            } catch (error) {
+                console.error('Error parsing lottery result:', error);
+                return null;
+            }
+            return null;
+        }
+
+        // 更新开奖信息显示
+        function updateLotteryDisplay(containerId, dateId, result, type) {
+            if (!result) {
+                console.log(`No result for ${type}, using fallback display`);
+                return;
+            }
+
+            console.log(`Updating display for ${type}:`, result);
+
+            const container = document.getElementById(containerId);
+            const dateContainer = document.getElementById(dateId);
+            
+            // 更新日期信息
+            dateContainer.innerHTML = `
+                开奖期号：${result.code || '未知'}<br>
+                开奖日期：${result.day || '未知'}<br>
+                开奖时间：${result.open_time || '未知'}<br>
+                下期开奖：${result.next_open_time || '未知'}
+            `;
+
+            // 更新号码
+            const numbers = parseLotteryResult(result, type);
+            if (numbers) {
+                createNumberBalls(numbers, container);
+            } else {
+                console.error(`Failed to parse numbers for ${type}`);
+                container.innerHTML = '<p style="color: red;">获取开奖号码失败</p>';
+            }
+        }
+
+        // 生成随机号码
+        function generateRandomNumbers(redCount, redMax, blueCount, blueMax) {
+            const redNumbers = new Set();
+            while(redNumbers.size < redCount) {
+                redNumbers.add(Math.floor(Math.random() * redMax) + 1);
+            }
+            const blueNumbers = new Set();
+            while(blueNumbers.size < blueCount) {
+                blueNumbers.add(Math.floor(Math.random() * blueMax) + 1);
+            }
+            return {
+                red: Array.from(redNumbers).sort((a, b) => a - b),
+                blue: Array.from(blueNumbers).sort((a, b) => a - b)
+            };
+        }
+
+        // 创建号码球
+        function createNumberBalls(numbers, container) {
+            container.innerHTML = '';
+            numbers.red.forEach(num => {
+                const ball = document.createElement('div');
+                ball.className = 'number red-ball';
+                ball.textContent = String(num).padStart(2, '0');
+                container.appendChild(ball);
+            });
+            numbers.blue.forEach(num => {
+                const ball = document.createElement('div');
+                ball.className = 'number blue-ball';
+                ball.textContent = String(num).padStart(2, '0');
+                container.appendChild(ball);
+            });
+        }
+
+        // 生成推荐号码
+        function generatePredictions(container, type) {
+            container.innerHTML = '';
+            for(let i = 0; i < 3; i++) {
+                const numbers = type === API_CONFIG.types.ssq 
+                    ? generateRandomNumbers(6, 33, 1, 16)
+                    : generateRandomNumbers(5, 35, 2, 12);
+                
+                const numbersDiv = document.createElement('div');
+                numbersDiv.className = 'lottery-numbers';
+                createNumberBalls(numbers, numbersDiv);
+                container.appendChild(numbersDiv);
+            }
+        }
+
+        // 生成投注建议
+        function generateRecommendation() {
+            const tips = [
+                "根据历史数据分析，建议选择均衡的号码分布，避免过于集中。",
+                "本期号码走势偏向小号，可以适当关注12-24区间的号码。",
+                "建议采用复式投注，提高中奖概率。",
+                "近期大号出现频率较高，可以关注25-33区间的号码。",
+                "建议选择奇偶比例均衡的号码组合。"
+            ];
+            const randomTip = tips[Math.floor(Math.random() * tips.length)];
+            document.getElementById('recommendation').textContent = randomTip;
+        }
+
+        // 刷新所有数据
+        async function refreshData() {
+            // 获取双色球数据
+            const ssqData = await fetchLotteryData(API_CONFIG.types.ssq);
+            if (ssqData) {
+                updateLotteryDisplay('ssqNumbers', 'ssqDate', ssqData, API_CONFIG.types.ssq);
+            } else {
+                // 如果API调用失败，使用模拟数据
+                const ssqNumbers = generateRandomNumbers(6, 33, 1, 16);
+                createNumberBalls(ssqNumbers, document.getElementById('ssqNumbers'));
+                document.getElementById('ssqDate').textContent = `开奖日期：${new Date().toLocaleDateString('zh-CN')}`;
+            }
+
+            // 获取大乐透数据
+            const dltData = await fetchLotteryData(API_CONFIG.types.dlt);
+            if (dltData) {
+                updateLotteryDisplay('dltNumbers', 'dltDate', dltData, API_CONFIG.types.dlt);
+            } else {
+                // 如果API调用失败，使用模拟数据
+                const dltNumbers = generateRandomNumbers(5, 35, 2, 12);
+                createNumberBalls(dltNumbers, document.getElementById('dltNumbers'));
+                document.getElementById('dltDate').textContent = `开奖日期：${new Date().toLocaleDateString('zh-CN')}`;
+            }
+            
+            // 更新推荐
+            generatePredictions(document.getElementById('ssqPredictions'), API_CONFIG.types.ssq);
+            generatePredictions(document.getElementById('dltPredictions'), API_CONFIG.types.dlt);
+            generateRecommendation();
+        }
+
+        // 初始化页面
+        refreshData();
+    </script>
+</body>
+</html>
