@@ -11,11 +11,14 @@
             box-sizing: border-box;
         }
 
-        body { 
+        body {
             font-family: 'Microsoft YaHei', Arial, sans-serif;
             background: #fdf6e3;
             color: #8b4513;
             padding-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .navbar {
@@ -61,29 +64,37 @@
             background: #654321;
         }
 
-        .main-content {
-            max-width: 1200px;
+        .container {
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-        }
-
-        h1, h2 {
-            color: #8b4513;
-            text-shadow: 1px 1px 2px rgba(139,69,19,0.3);
-            text-align: center;
-            margin-bottom: 20px;
+            flex-grow: 1;
         }
 
         .lottery-section {
             background: white;
             border-radius: 15px;
-            padding: 20px;
+            padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(139,69,19,0.1);
+        }
+
+        h1, h2 {
+            color: #8b4513;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .lottery-info {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fff8dc;
+            border-radius: 10px;
         }
 
         .lottery-numbers {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
             margin: 20px 0;
@@ -92,119 +103,84 @@
         .number {
             width: 40px;
             height: 40px;
+            background: #8b4513;
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            color: white;
-            animation: appear 0.5s ease;
+            font-size: 1.2em;
         }
 
-        .red-ball {
-            background: #ff4444;
-        }
-
-        .blue-ball {
-            background: #4444ff;
-        }
-
-        .recommendation {
-            background: #fff8dc;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-
-        .recommendation h3 {
-            color: #8b4513;
-            margin-bottom: 15px;
-        }
-
-        .recommendation p {
-            color: #654321;
-            line-height: 1.6;
-        }
-
-        .date-info {
-            text-align: center;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .refresh-button {
+        .button {
             display: block;
+            width: 200px;
             margin: 20px auto;
-            padding: 10px 25px;
+            padding: 15px 30px;
             background: #8b4513;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 1.1em;
             cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
+            transition: background 0.3s;
         }
 
-        .refresh-button:hover {
+        .button:hover {
             background: #654321;
-            transform: translateY(-2px);
         }
 
-        .lottery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        .lottery-history {
+            margin-top: 30px;
         }
 
-        .prediction-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .prediction-card h3 {
-            color: #8b4513;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .prize-info {
-            margin-top: 20px;
+        .history-item {
             padding: 15px;
-            background: #fff8dc;
-            border-radius: 10px;
-        }
-        
-        .prize-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .prize-item {
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .prize-item strong {
-            color: #ff4444;
-            display: block;
-            margin-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        @keyframes appear {
-            from {
-                transform: scale(0.5);
-                opacity: 0;
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
             }
-            to {
-                transform: scale(1);
-                opacity: 1;
+
+            .nav-links {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .lottery-section {
+                padding: 20px;
+            }
+
+            .lottery-numbers {
+                gap: 5px;
+            }
+
+            .number {
+                width: 35px;
+                height: 35px;
+                font-size: 1em;
+            }
+
+            .history-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
             }
         }
     </style>
@@ -217,42 +193,49 @@
                 <a href="index.html">首页</a>
                 <a href="food-picker.html">美食选择</a>
                 <a href="lottery.html">彩票信息</a>
+                <a href="grok-chat.html">AI 对话</a>
             </div>
         </div>
     </nav>
 
-    <div class="main-content">
-        <h1>今日彩票信息</h1>
-        
+    <div class="container">
         <div class="lottery-section">
-            <h2>双色球最新开奖</h2>
-            <div class="date-info" id="ssqDate"></div>
-            <div class="lottery-numbers" id="ssqNumbers"></div>
-        </div>
-
-        <div class="lottery-section">
-            <h2>大乐透最新开奖</h2>
-            <div class="date-info" id="dltDate"></div>
-            <div class="lottery-numbers" id="dltNumbers"></div>
-        </div>
-
-        <button class="refresh-button" onclick="refreshData()">刷新数据</button>
-
-        <div class="lottery-section">
-            <h2>智能推荐</h2>
-            <div class="lottery-grid">
-                <div class="prediction-card">
-                    <h3>双色球推荐号码</h3>
-                    <div id="ssqPredictions"></div>
+            <h1>今日彩票信息</h1>
+            
+            <div class="lottery-info">
+                <h2>双色球最新开奖</h2>
+                <div class="lottery-numbers" id="ssqNumbers">
+                    <!-- 数字将通过 JavaScript 动态生成 -->
                 </div>
-                <div class="prediction-card">
-                    <h3>大乐透推荐号码</h3>
-                    <div id="dltPredictions"></div>
-                </div>
+                <p class="text-center">开奖日期：<span id="ssqDate"></span></p>
             </div>
-            <div class="recommendation">
-                <h3>投注建议</h3>
-                <p id="recommendation"></p>
+
+            <div class="lottery-info">
+                <h2>大乐透最新开奖</h2>
+                <div class="lottery-numbers" id="dltNumbers">
+                    <!-- 数字将通过 JavaScript 动态生成 -->
+                </div>
+                <p class="text-center">开奖日期：<span id="dltDate"></span></p>
+            </div>
+
+            <button class="button" onclick="refreshData()">刷新数据</button>
+
+            <div class="lottery-section">
+                <h2>智能推荐</h2>
+                <div class="lottery-grid">
+                    <div class="prediction-card">
+                        <h3>双色球推荐号码</h3>
+                        <div id="ssqPredictions"></div>
+                    </div>
+                    <div class="prediction-card">
+                        <h3>大乐透推荐号码</h3>
+                        <div id="dltPredictions"></div>
+                    </div>
+                </div>
+                <div class="recommendation">
+                    <h3>投注建议</h3>
+                    <p id="recommendation"></p>
+                </div>
             </div>
         </div>
     </div>
